@@ -52,6 +52,40 @@ const plugins = [
   //     webhook_secret: STRIPE_WEBHOOK_SECRET,
   //   },
   // },
+  {
+    resolve: `medusa-plugin-meilisearch`,
+    options: {
+      // config object passed when creating an instance
+      // of the MeiliSearch client
+      config: {
+        host: process.env.MEILISEARCH_HOST,
+        apiKey: process.env.MEILISEARCH_API_KEY,
+      },
+      settings: {
+        // index name
+        products: {
+          // MeiliSearch's setting options to be set on a particular index
+          searchableAttributes: ["title", "description", "variant_sku"],
+          displayedAttributes: [
+            "title", 
+            "description", 
+            "variant_sku", 
+            "thumbnail", 
+            "handle",
+          ],
+        },
+      },
+    },
+  },
+  {
+    resolve: `medusa-file-minio`,
+    options: {
+        endpoint: process.env.MINIO_ENDPOINT,
+        bucket: process.env.MINIO_BUCKET,
+        access_key_id: process.env.MINIO_ACCESS_KEY,
+        secret_access_key: process.env.MINIO_SECRET_KEY,
+    },
+  },
 ];
 
 module.exports = {
