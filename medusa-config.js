@@ -68,7 +68,7 @@ const plugins = [
           searchableAttributes: ["title", "description", "variant_sku"],
           displayedAttributes: [
             "title", 
-            "description", 
+            // "description", 
             "variant_sku", 
             "thumbnail", 
             "handle",
